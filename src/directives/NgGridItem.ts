@@ -159,9 +159,7 @@ export class NgGridItem implements OnInit, OnDestroy {
 		if (!this.isDraggable) return false;
 
 		if (this._dragHandle) {
-			var parent = e.target.parentElement;
-
-			return parent.querySelector(this._dragHandle) == e.target;
+			return !!this._findAncestor(e.target, this._dragHandle);
 		}
 
 		return true;
@@ -171,9 +169,7 @@ export class NgGridItem implements OnInit, OnDestroy {
 		if (!this.isResizable) return null;
 
 		if (this._resizeHandle) {
-			var parent = e.target.parentElement;
-
-			return parent.querySelector(this._resizeHandle) == e.target ? 'both' : null;
+			return !!this._findAncestor(e.target, this._resizeHandle) ? 'both' : null;
 		}
 
 		var mousePos = this._getMousePosition(e);
@@ -385,6 +381,15 @@ export class NgGridItem implements OnInit, OnDestroy {
 	}
 
 	//	Private methods
+	private _findAncestor(el: any, cls: string) {
+		while ((el = el.parentElement) && !el.classList.contains(cls)) {
+			if (el.nodeName === 'A') {
+				return null;
+			}
+		};
+		return el;
+	}
+
 	private _recalculatePosition(): void {
 		var x = (this._ngGrid.colWidth + this._ngGrid.marginLeft + this._ngGrid.marginRight) * (this._col - 1) + this._ngGrid.marginLeft;
 		var y = (this._ngGrid.rowHeight + this._ngGrid.marginTop + this._ngGrid.marginBottom) * (this._row - 1) + this._ngGrid.marginTop;
