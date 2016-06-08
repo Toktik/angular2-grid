@@ -99,7 +99,7 @@ gulp.task('clean', function(done) {
 });
 
 gulp.task('build', ['clean'], function() {
-	return gulp.start('libs', 'html', 'css', 'ts');
+	return gulp.start('html', 'css', 'ts');
 });
 
 gulp.task('rebuild', ['clean'], function() {
