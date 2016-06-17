@@ -86,6 +86,7 @@ export declare class NgGridItem implements OnInit, OnDestroy {
     stopMoving(): void;
     recalculateSelf(): void;
     fixResize(newSize: NgGridItemSize): NgGridItemSize;
+    private elementMatches(element, selector);
     private _recalculatePosition();
     private _recalculateDimensions();
     private _getMousePosition(e);

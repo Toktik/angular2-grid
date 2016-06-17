@@ -55,6 +55,8 @@ export declare class NgGrid implements OnInit, DoCheck, OnDestroy {
     private _preferNew;
     private _zoomOnDrag;
     private _limitToScreen;
+    private _curMaxRow;
+    private _curMaxCol;
     private static CONST_DEFAULT_CONFIG;
     private _config;
     config: NgGridConfig;
@@ -114,7 +116,6 @@ export declare class NgGrid implements OnInit, DoCheck, OnDestroy {
     private _addToGrid(item);
     private _removeFromGrid(item);
     private _updateSize(col?, row?);
-    private _filterGrid();
     private _getMaxRow();
     private _getMaxCol();
     private _getMousePosition(e);
