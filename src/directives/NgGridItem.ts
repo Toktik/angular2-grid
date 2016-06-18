@@ -173,6 +173,7 @@ export class NgGridItem implements OnInit, OnDestroy {
 		let targetElem = startElement;
 		
 		while (targetElem && targetElem != this._ngEl.nativeElement) {
+			if (this.elementMatches(targetElem, '.handleExclude')) return false;
 			if (this.elementMatches(targetElem, handleSelector)) return true;
 			
 			targetElem = targetElem.parentElement;
