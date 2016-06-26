@@ -1,6 +1,6 @@
 import { ElementRef, Renderer, EventEmitter, DynamicComponentLoader, KeyValueDiffers, OnInit, OnDestroy, DoCheck, ViewContainerRef } from '@angular/core';
-import { NgGridConfig, NgGridItemEvent } from "../interfaces/INgGrid";
-import { NgGridItem } from "./NgGridItem";
+import { NgGridConfig, NgGridItemEvent, NgGridItemPosition, NgGridItemSize } from '../interfaces/INgGrid';
+import { NgGridItem } from './NgGridItem';
 export declare class NgGrid implements OnInit, DoCheck, OnDestroy {
     private _differs;
     private _ngEl;
@@ -64,14 +64,8 @@ export declare class NgGrid implements OnInit, DoCheck, OnDestroy {
     ngOnInit(): void;
     ngOnDestroy(): void;
     setConfig(config: NgGridConfig): void;
-    getItemPosition(index: number): {
-        col: number;
-        row: number;
-    };
-    getItemSize(index: number): {
-        x: number;
-        y: number;
-    };
+    getItemPosition(index: number): NgGridItemPosition;
+    getItemSize(index: number): NgGridItemSize;
     ngDoCheck(): boolean;
     setMargins(margins: Array<string>): void;
     enableDrag(): void;
@@ -106,8 +100,6 @@ export declare class NgGrid implements OnInit, DoCheck, OnDestroy {
     private _getCollisions(pos, dims);
     private _fixGridCollisions(pos, dims);
     private _limitGrid(maxCols);
-    private _canFit(pos, dims, columnMax);
-    private _fitItem(dims, columnMax);
     private _cascadeGrid(pos?, dims?, shouldSave?);
     private _fixGridPosition(pos, dims);
     private _isWithinBoundsX(pos, dims);

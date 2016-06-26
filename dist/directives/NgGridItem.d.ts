@@ -1,5 +1,5 @@
 import { NgGrid } from "./NgGrid";
-import { NgGridItemConfig, NgGridItemEvent, NgGridItemPosition, NgGridItemSize } from "../interfaces/INgGrid";
+import { NgGridItemConfig, NgGridItemEvent, NgGridItemPosition, NgGridItemSize, NgGridRawPosition, NgGridItemDimensions } from "../interfaces/INgGrid";
 import { ElementRef, Renderer, EventEmitter, KeyValueDiffers, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
 export declare class NgGridItem implements OnInit, OnDestroy {
     private _differs;
@@ -45,6 +45,12 @@ export declare class NgGridItem implements OnInit, OnDestroy {
     private _maxRows;
     private _minRows;
     config: NgGridItemConfig;
+    sizex: number;
+    sizey: number;
+    col: number;
+    row: number;
+    currentCol: number;
+    currentRow: number;
     constructor(_differs: KeyValueDiffers, _ngEl: ElementRef, _renderer: Renderer, _ngGrid: NgGrid, containerRef: ViewContainerRef);
     onResizeStartEvent(): void;
     onResizeEvent(): void;
@@ -62,15 +68,9 @@ export declare class NgGridItem implements OnInit, OnDestroy {
     getElement(): ElementRef;
     getDragHandle(): string;
     getResizeHandle(): string;
-    getDimensions(): {
-        width: number;
-        height: number;
-    };
+    getDimensions(): NgGridItemDimensions;
     getSize(): NgGridItemSize;
-    getPosition(): {
-        left: number;
-        top: number;
-    };
+    getPosition(): NgGridRawPosition;
     getGridPosition(): NgGridItemPosition;
     getSavedPosition(): NgGridItemPosition;
     setConfig(config: NgGridItemConfig): void;

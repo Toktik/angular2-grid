@@ -56,3 +56,11 @@ export interface NgGridItemPosition {
     col: number;
     row: number;
 }
+export interface NgGridRawPosition {
+    left: number;
+    top: number;
+}
+export interface NgGridItemDimensions {
+    width: number;
+    height: number;
+}
