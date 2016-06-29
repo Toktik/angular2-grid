@@ -98,7 +98,7 @@ export declare class NgGrid implements OnInit, DoCheck, OnDestroy {
     private _calculateGridPosition(left, top);
     private _hasGridCollision(pos, dims);
     private _getCollisions(pos, dims);
-    private _fixGridCollisions(pos, dims);
+    private _fixGridCollisions(pos, dims, shouldSave?);
     private _limitGrid(maxCols);
     private _cascadeGrid(pos?, dims?, shouldSave?);
     private _fixGridPosition(pos, dims);

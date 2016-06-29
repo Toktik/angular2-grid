@@ -25,6 +25,8 @@ export declare class NgGridItem implements OnInit, OnDestroy {
     isFixed: boolean;
     isDraggable: boolean;
     isResizable: boolean;
+    minWidth: number;
+    minHeight: number;
     private _payload;
     private _position;
     private _currentPosition;
